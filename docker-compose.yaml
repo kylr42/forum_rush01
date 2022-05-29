@@ -13,12 +13,10 @@ services:
     env_file:
       - .env
     volumes:
-      - ./app:/usr/src
-    ports:
-      - "8000:8000"
+      - "./app:/usr/src/app"
     command: [
-      "python", "-m", "gunicorn", "core.wsgi",
-      "--bind" ,"0.0.0.0:8000",
+      "gunicorn", "core.wsgi:application",
+      "--bind", "0.0.0.0:8000",
     ]
 
   nginx:
@@ -29,8 +27,8 @@ services:
       dockerfile: Dockerfile
 
     volumes:
-      - "static:/usr/src/app/static"
-      - "media:/usr/src/app/media"
+      - "./data/static:/usr/src/app/static"
+      - "./data/media:/usr/src/app/media"
     ports:
       - "80:80"
       - "443:443"

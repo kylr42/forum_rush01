@@ -2,6 +2,8 @@ FROM nginx:1.21-alpine
 
 WORKDIR /usr/src/app
 
+RUN apk update && apk upgrade --available && sync \
+    && apk add openssl
 
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 1 -nodes \
     -out ssl.crt -keyout ssl.key \
@@ -12,7 +14,7 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 1 -nodes \
     mv ssl.key /etc/ssl/private
 
 
-RUN rm /etc/nginx/conf.d/default.conf
+# RUN rm /etc/nginx/conf.d/default.conf
 
 COPY nginx.conf /etc/nginx/conf.d
 
