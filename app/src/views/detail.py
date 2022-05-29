@@ -1,6 +1,6 @@
 from typing import Any, Dict
 from django.views.generic import DetailView
-from models import Article
+from ..models.article import Article
 
 class Detail(DetailView):
     model = Article
