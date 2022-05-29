@@ -3,7 +3,7 @@ from django.views.generic import ListView
 from ..models.article import Article
 
 
-class Index(ListView):
+class HomePageView(ListView):
     model = Article
     template_name = 'forum.html'
     queryset = Article.objects.all().order_by('-created')[:10]

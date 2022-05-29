@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
 
-class SrcConfig(AppConfig):
-    name = 'src'
+class ForumConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'forum'
