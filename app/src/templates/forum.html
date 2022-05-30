@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Forum{% endblock %}
+{% block content %}
+
+{% if not object_list %}
+<main class="container">
+    <div class="bg-light p-5 rounded">
+        <h1>Unfortunately it's empty here</h1>
+        <p class="lead">Wait a bit, suddenly something will appear here :)</p>
+    </div>
+</main>
+{% else %}
+<main class="container">
+    {% for elem in object_list %}
+    <div class="bg-light p-5 rounded">
+        <h2>{{ elem.title }}</h2>
+        <p class="lead">{{ elem.synopsis }}</p>
+        <a class="btn btn-lg btn-primary" href="{% url 'articles_detail' elem.id %}" role="button">Read</a>
+    </div>
+    {% endfor %}
+</main>
+{% endif %}
+{% endblock %}
