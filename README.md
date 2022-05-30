@@ -7,5 +7,5 @@
         [+] - added new funcs
         [-] - deleted code
         [±] - refactoring 
-        [!] - merge request
+        [!] - pull request
         [@] - some changes
